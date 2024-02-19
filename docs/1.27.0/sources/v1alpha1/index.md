@@ -1,0 +1,46 @@
+---
+permalink: /1.27.0/sources/v1alpha1/
+---
+
+# sources.v1alpha1
+
+
+
+* [awsCloudWatchLogsSource](awsCloudWatchLogsSource.md)
+* [awsCloudWatchSource](awsCloudWatchSource.md)
+* [awsCodeCommitSource](awsCodeCommitSource.md)
+* [awsCognitoIdentitySource](awsCognitoIdentitySource.md)
+* [awsCognitoUserPoolSource](awsCognitoUserPoolSource.md)
+* [awsDynamoDBSource](awsDynamoDBSource.md)
+* [awsEventBridgeSource](awsEventBridgeSource.md)
+* [awsKinesisSource](awsKinesisSource.md)
+* [awsPerformanceInsightsSource](awsPerformanceInsightsSource.md)
+* [awss3Source](awss3Source.md)
+* [awssnsSource](awssnsSource.md)
+* [awssqsSource](awssqsSource.md)
+* [azureActivityLogsSource](azureActivityLogsSource.md)
+* [azureBlobStorageSource](azureBlobStorageSource.md)
+* [azureEventGridSource](azureEventGridSource.md)
+* [azureEventHubsSource](azureEventHubsSource.md)
+* [azureIOTHubSource](azureIOTHubSource.md)
+* [azureQueueStorageSource](azureQueueStorageSource.md)
+* [azureServiceBusQueueSource](azureServiceBusQueueSource.md)
+* [azureServiceBusSource](azureServiceBusSource.md)
+* [azureServiceBusTopicSource](azureServiceBusTopicSource.md)
+* [cloudEventsSource](cloudEventsSource.md)
+* [googleCloudAuditLogsSource](googleCloudAuditLogsSource.md)
+* [googleCloudBillingSource](googleCloudBillingSource.md)
+* [googleCloudPubSubSource](googleCloudPubSubSource.md)
+* [googleCloudSourceRepositoriesSource](googleCloudSourceRepositoriesSource.md)
+* [googleCloudStorageSource](googleCloudStorageSource.md)
+* [httpPollerSource](httpPollerSource.md)
+* [ibmmqSource](ibmmqSource.md)
+* [kafkaSource](kafkaSource.md)
+* [mongoDBSource](mongoDBSource.md)
+* [ociMetricsSource](ociMetricsSource.md)
+* [salesforceSource](salesforceSource.md)
+* [slackSource](slackSource.md)
+* [solaceSource](solaceSource.md)
+* [twilioSource](twilioSource.md)
+* [webhookSource](webhookSource.md)
+* [zendeskSource](zendeskSource.md)

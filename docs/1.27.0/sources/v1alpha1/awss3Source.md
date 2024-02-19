@@ -1,0 +1,717 @@
+---
+permalink: /1.27.0/sources/v1alpha1/awss3Source/
+---
+
+# sources.v1alpha1.awss3Source
+
+"TriggerMesh event source for Amazon S3."
+
+## Index
+
+* [`fn new(name)`](#fn-new)
+* [`obj metadata`](#obj-metadata)
+  * [`fn withAnnotations(annotations)`](#fn-metadatawithannotations)
+  * [`fn withAnnotationsMixin(annotations)`](#fn-metadatawithannotationsmixin)
+  * [`fn withClusterName(clusterName)`](#fn-metadatawithclustername)
+  * [`fn withCreationTimestamp(creationTimestamp)`](#fn-metadatawithcreationtimestamp)
+  * [`fn withDeletionGracePeriodSeconds(deletionGracePeriodSeconds)`](#fn-metadatawithdeletiongraceperiodseconds)
+  * [`fn withDeletionTimestamp(deletionTimestamp)`](#fn-metadatawithdeletiontimestamp)
+  * [`fn withFinalizers(finalizers)`](#fn-metadatawithfinalizers)
+  * [`fn withFinalizersMixin(finalizers)`](#fn-metadatawithfinalizersmixin)
+  * [`fn withGenerateName(generateName)`](#fn-metadatawithgeneratename)
+  * [`fn withGeneration(generation)`](#fn-metadatawithgeneration)
+  * [`fn withLabels(labels)`](#fn-metadatawithlabels)
+  * [`fn withLabelsMixin(labels)`](#fn-metadatawithlabelsmixin)
+  * [`fn withName(name)`](#fn-metadatawithname)
+  * [`fn withNamespace(namespace)`](#fn-metadatawithnamespace)
+  * [`fn withOwnerReferences(ownerReferences)`](#fn-metadatawithownerreferences)
+  * [`fn withOwnerReferencesMixin(ownerReferences)`](#fn-metadatawithownerreferencesmixin)
+  * [`fn withResourceVersion(resourceVersion)`](#fn-metadatawithresourceversion)
+  * [`fn withSelfLink(selfLink)`](#fn-metadatawithselflink)
+  * [`fn withUid(uid)`](#fn-metadatawithuid)
+* [`obj spec`](#obj-spec)
+  * [`fn withArn(arn)`](#fn-specwitharn)
+  * [`fn withEventTypes(eventTypes)`](#fn-specwitheventtypes)
+  * [`fn withEventTypesMixin(eventTypes)`](#fn-specwitheventtypesmixin)
+  * [`obj spec.adapterOverrides`](#obj-specadapteroverrides)
+    * [`fn withAffinity(affinity)`](#fn-specadapteroverrideswithaffinity)
+    * [`fn withAffinityMixin(affinity)`](#fn-specadapteroverrideswithaffinitymixin)
+    * [`fn withAnnotations(annotations)`](#fn-specadapteroverrideswithannotations)
+    * [`fn withAnnotationsMixin(annotations)`](#fn-specadapteroverrideswithannotationsmixin)
+    * [`fn withEnv(env)`](#fn-specadapteroverrideswithenv)
+    * [`fn withEnvMixin(env)`](#fn-specadapteroverrideswithenvmixin)
+    * [`fn withLabels(labels)`](#fn-specadapteroverrideswithlabels)
+    * [`fn withLabelsMixin(labels)`](#fn-specadapteroverrideswithlabelsmixin)
+    * [`fn withNodeSelector(nodeSelector)`](#fn-specadapteroverrideswithnodeselector)
+    * [`fn withNodeSelectorMixin(nodeSelector)`](#fn-specadapteroverrideswithnodeselectormixin)
+    * [`fn withTolerations(tolerations)`](#fn-specadapteroverrideswithtolerations)
+    * [`fn withTolerationsMixin(tolerations)`](#fn-specadapteroverrideswithtolerationsmixin)
+    * [`obj spec.adapterOverrides.env`](#obj-specadapteroverridesenv)
+      * [`fn withName(name)`](#fn-specadapteroverridesenvwithname)
+      * [`fn withValue(value)`](#fn-specadapteroverridesenvwithvalue)
+    * [`obj spec.adapterOverrides.resources`](#obj-specadapteroverridesresources)
+      * [`fn withLimits(limits)`](#fn-specadapteroverridesresourceswithlimits)
+      * [`fn withLimitsMixin(limits)`](#fn-specadapteroverridesresourceswithlimitsmixin)
+      * [`fn withRequests(requests)`](#fn-specadapteroverridesresourceswithrequests)
+      * [`fn withRequestsMixin(requests)`](#fn-specadapteroverridesresourceswithrequestsmixin)
+    * [`obj spec.adapterOverrides.tolerations`](#obj-specadapteroverridestolerations)
+      * [`fn withEffect(effect)`](#fn-specadapteroverridestolerationswitheffect)
+      * [`fn withKey(key)`](#fn-specadapteroverridestolerationswithkey)
+      * [`fn withOperator(operator)`](#fn-specadapteroverridestolerationswithoperator)
+      * [`fn withTolerationSeconds(tolerationSeconds)`](#fn-specadapteroverridestolerationswithtolerationseconds)
+      * [`fn withValue(value)`](#fn-specadapteroverridestolerationswithvalue)
+  * [`obj spec.auth`](#obj-specauth)
+    * [`fn withIamRole(iamRole)`](#fn-specauthwithiamrole)
+    * [`obj spec.auth.credentials`](#obj-specauthcredentials)
+      * [`fn withAssumeIamRole(assumeIamRole)`](#fn-specauthcredentialswithassumeiamrole)
+      * [`obj spec.auth.credentials.accessKeyID`](#obj-specauthcredentialsaccesskeyid)
+        * [`fn withValue(value)`](#fn-specauthcredentialsaccesskeyidwithvalue)
+        * [`obj spec.auth.credentials.accessKeyID.valueFromSecret`](#obj-specauthcredentialsaccesskeyidvaluefromsecret)
+          * [`fn withKey(key)`](#fn-specauthcredentialsaccesskeyidvaluefromsecretwithkey)
+          * [`fn withName(name)`](#fn-specauthcredentialsaccesskeyidvaluefromsecretwithname)
+      * [`obj spec.auth.credentials.secretAccessKey`](#obj-specauthcredentialssecretaccesskey)
+        * [`fn withValue(value)`](#fn-specauthcredentialssecretaccesskeywithvalue)
+        * [`obj spec.auth.credentials.secretAccessKey.valueFromSecret`](#obj-specauthcredentialssecretaccesskeyvaluefromsecret)
+          * [`fn withKey(key)`](#fn-specauthcredentialssecretaccesskeyvaluefromsecretwithkey)
+          * [`fn withName(name)`](#fn-specauthcredentialssecretaccesskeyvaluefromsecretwithname)
+      * [`obj spec.auth.credentials.sessionToken`](#obj-specauthcredentialssessiontoken)
+        * [`fn withValue(value)`](#fn-specauthcredentialssessiontokenwithvalue)
+        * [`obj spec.auth.credentials.sessionToken.valueFromSecret`](#obj-specauthcredentialssessiontokenvaluefromsecret)
+          * [`fn withKey(key)`](#fn-specauthcredentialssessiontokenvaluefromsecretwithkey)
+          * [`fn withName(name)`](#fn-specauthcredentialssessiontokenvaluefromsecretwithname)
+    * [`obj spec.auth.iam`](#obj-specauthiam)
+      * [`fn withRoleArn(roleArn)`](#fn-specauthiamwithrolearn)
+      * [`fn withServiceAccount(serviceAccount)`](#fn-specauthiamwithserviceaccount)
+  * [`obj spec.destination`](#obj-specdestination)
+    * [`obj spec.destination.sqs`](#obj-specdestinationsqs)
+      * [`fn withQueueARN(queueARN)`](#fn-specdestinationsqswithqueuearn)
+  * [`obj spec.sink`](#obj-specsink)
+    * [`fn withUri(uri)`](#fn-specsinkwithuri)
+    * [`obj spec.sink.ref`](#obj-specsinkref)
+      * [`fn withApiVersion(apiVersion)`](#fn-specsinkrefwithapiversion)
+      * [`fn withKind(kind)`](#fn-specsinkrefwithkind)
+      * [`fn withName(name)`](#fn-specsinkrefwithname)
+      * [`fn withNamespace(namespace)`](#fn-specsinkrefwithnamespace)
+
+## Fields
+
+### fn new
+
+```ts
+new(name)
+```
+
+new returns an instance of AWSS3Source
+
+## obj metadata
+
+"ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create."
+
+### fn metadata.withAnnotations
+
+```ts
+withAnnotations(annotations)
+```
+
+"Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+
+### fn metadata.withAnnotationsMixin
+
+```ts
+withAnnotationsMixin(annotations)
+```
+
+"Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+
+**Note:** This function appends passed data to existing values
+
+### fn metadata.withClusterName
+
+```ts
+withClusterName(clusterName)
+```
+
+"The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
+
+### fn metadata.withCreationTimestamp
+
+```ts
+withCreationTimestamp(creationTimestamp)
+```
+
+"Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers."
+
+### fn metadata.withDeletionGracePeriodSeconds
+
+```ts
+withDeletionGracePeriodSeconds(deletionGracePeriodSeconds)
+```
+
+"Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only."
+
+### fn metadata.withDeletionTimestamp
+
+```ts
+withDeletionTimestamp(deletionTimestamp)
+```
+
+"Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers."
+
+### fn metadata.withFinalizers
+
+```ts
+withFinalizers(finalizers)
+```
+
+"Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list."
+
+### fn metadata.withFinalizersMixin
+
+```ts
+withFinalizersMixin(finalizers)
+```
+
+"Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list."
+
+**Note:** This function appends passed data to existing values
+
+### fn metadata.withGenerateName
+
+```ts
+withGenerateName(generateName)
+```
+
+"GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency"
+
+### fn metadata.withGeneration
+
+```ts
+withGeneration(generation)
+```
+
+"A sequence number representing a specific generation of the desired state. Populated by the system. Read-only."
+
+### fn metadata.withLabels
+
+```ts
+withLabels(labels)
+```
+
+"Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+
+### fn metadata.withLabelsMixin
+
+```ts
+withLabelsMixin(labels)
+```
+
+"Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+
+**Note:** This function appends passed data to existing values
+
+### fn metadata.withName
+
+```ts
+withName(name)
+```
+
+"Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+
+### fn metadata.withNamespace
+
+```ts
+withNamespace(namespace)
+```
+
+"Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
+
+### fn metadata.withOwnerReferences
+
+```ts
+withOwnerReferences(ownerReferences)
+```
+
+"List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+
+### fn metadata.withOwnerReferencesMixin
+
+```ts
+withOwnerReferencesMixin(ownerReferences)
+```
+
+"List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+
+**Note:** This function appends passed data to existing values
+
+### fn metadata.withResourceVersion
+
+```ts
+withResourceVersion(resourceVersion)
+```
+
+"An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency"
+
+### fn metadata.withSelfLink
+
+```ts
+withSelfLink(selfLink)
+```
+
+"SelfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release."
+
+### fn metadata.withUid
+
+```ts
+withUid(uid)
+```
+
+"UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+
+## obj spec
+
+"Desired state of the event source."
+
+### fn spec.withArn
+
+```ts
+withArn(arn)
+```
+
+"ARN of the Amazon S3 bucket to receive notifications from. The expected format is documented at\nhttps://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html#amazons3-resources-for-iam-policies.\n\nAlthough not technically supported by S3, the ARN provided via this attribute may include a region and\nan account ID. When this information is provided, it is used to set an accurate identity-based access\npolicy between the S3 bucket and the reconciled SQS queue, unless an existing queue is provided via\nthe 'destination.sqs.queueARN' attribute."
+
+### fn spec.withEventTypes
+
+```ts
+withEventTypes(eventTypes)
+```
+
+"List of event types that the source should subscribe to. Accepted values are listed at https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html."
+
+### fn spec.withEventTypesMixin
+
+```ts
+withEventTypesMixin(eventTypes)
+```
+
+"List of event types that the source should subscribe to. Accepted values are listed at https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-event-types-and-destinations.html."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.adapterOverrides
+
+"Kubernetes object parameters to apply on top of default adapter values."
+
+### fn spec.adapterOverrides.withAffinity
+
+```ts
+withAffinity(affinity)
+```
+
+"Scheduling constraints of the pod. More info at https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity. Affinity require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+### fn spec.adapterOverrides.withAffinityMixin
+
+```ts
+withAffinityMixin(affinity)
+```
+
+"Scheduling constraints of the pod. More info at https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity. Affinity require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.adapterOverrides.withAnnotations
+
+```ts
+withAnnotations(annotations)
+```
+
+"Adapter annotations."
+
+### fn spec.adapterOverrides.withAnnotationsMixin
+
+```ts
+withAnnotationsMixin(annotations)
+```
+
+"Adapter annotations."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.adapterOverrides.withEnv
+
+```ts
+withEnv(env)
+```
+
+"Adapter environment variables."
+
+### fn spec.adapterOverrides.withEnvMixin
+
+```ts
+withEnvMixin(env)
+```
+
+"Adapter environment variables."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.adapterOverrides.withLabels
+
+```ts
+withLabels(labels)
+```
+
+"Adapter labels."
+
+### fn spec.adapterOverrides.withLabelsMixin
+
+```ts
+withLabelsMixin(labels)
+```
+
+"Adapter labels."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.adapterOverrides.withNodeSelector
+
+```ts
+withNodeSelector(nodeSelector)
+```
+
+"NodeSelector only allow the object pods to be created at nodes where all selector labels are present, as documented at https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector. NodeSelector require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+### fn spec.adapterOverrides.withNodeSelectorMixin
+
+```ts
+withNodeSelectorMixin(nodeSelector)
+```
+
+"NodeSelector only allow the object pods to be created at nodes where all selector labels are present, as documented at https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector. NodeSelector require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.adapterOverrides.withTolerations
+
+```ts
+withTolerations(tolerations)
+```
+
+"Pod tolerations, as documented at https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ Tolerations require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+### fn spec.adapterOverrides.withTolerationsMixin
+
+```ts
+withTolerationsMixin(tolerations)
+```
+
+"Pod tolerations, as documented at https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ Tolerations require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.adapterOverrides.env
+
+"Adapter environment variables."
+
+### fn spec.adapterOverrides.env.withName
+
+```ts
+withName(name)
+```
+
+
+
+### fn spec.adapterOverrides.env.withValue
+
+```ts
+withValue(value)
+```
+
+
+
+## obj spec.adapterOverrides.resources
+
+"Compute Resources required by the adapter. More info at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+
+### fn spec.adapterOverrides.resources.withLimits
+
+```ts
+withLimits(limits)
+```
+
+"Limits describes the maximum amount of compute resources allowed. More info at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+
+### fn spec.adapterOverrides.resources.withLimitsMixin
+
+```ts
+withLimitsMixin(limits)
+```
+
+"Limits describes the maximum amount of compute resources allowed. More info at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.adapterOverrides.resources.withRequests
+
+```ts
+withRequests(requests)
+```
+
+"Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+
+### fn spec.adapterOverrides.resources.withRequestsMixin
+
+```ts
+withRequestsMixin(requests)
+```
+
+"Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.adapterOverrides.tolerations
+
+"Pod tolerations, as documented at https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ Tolerations require additional configuration for Knative-based deployments - https://knative.dev/docs/serving/configuration/feature-flags/"
+
+### fn spec.adapterOverrides.tolerations.withEffect
+
+```ts
+withEffect(effect)
+```
+
+"Taint effect to match."
+
+### fn spec.adapterOverrides.tolerations.withKey
+
+```ts
+withKey(key)
+```
+
+"Taint key that the toleration applies to."
+
+### fn spec.adapterOverrides.tolerations.withOperator
+
+```ts
+withOperator(operator)
+```
+
+"Key's relationship to the value."
+
+### fn spec.adapterOverrides.tolerations.withTolerationSeconds
+
+```ts
+withTolerationSeconds(tolerationSeconds)
+```
+
+"Period of time a toleration of effect NoExecute tolerates the taint."
+
+### fn spec.adapterOverrides.tolerations.withValue
+
+```ts
+withValue(value)
+```
+
+"Taint value the toleration matches to."
+
+## obj spec.auth
+
+"Authentication method to interact with the Amazon S3 and SQS APIs."
+
+### fn spec.auth.withIamRole
+
+```ts
+withIamRole(iamRole)
+```
+
+"Deprecated, please use \"iam\" object instead."
+
+## obj spec.auth.credentials
+
+"Security credentials authentication. For more information about AWS security credentials, please refer to the AWS General Reference at https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html."
+
+### fn spec.auth.credentials.withAssumeIamRole
+
+```ts
+withAssumeIamRole(assumeIamRole)
+```
+
+"The ARN of an IAM role for cross-account or remote EKS cluster authorization.\nFor more information please refer to the AWS General Reference at https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html"
+
+## obj spec.auth.credentials.accessKeyID
+
+"Access key ID."
+
+### fn spec.auth.credentials.accessKeyID.withValue
+
+```ts
+withValue(value)
+```
+
+"Literal value of the access key ID."
+
+## obj spec.auth.credentials.accessKeyID.valueFromSecret
+
+"A reference to a Kubernetes Secret object containing the access key ID."
+
+### fn spec.auth.credentials.accessKeyID.valueFromSecret.withKey
+
+```ts
+withKey(key)
+```
+
+
+
+### fn spec.auth.credentials.accessKeyID.valueFromSecret.withName
+
+```ts
+withName(name)
+```
+
+
+
+## obj spec.auth.credentials.secretAccessKey
+
+"Secret access key."
+
+### fn spec.auth.credentials.secretAccessKey.withValue
+
+```ts
+withValue(value)
+```
+
+"Literal value of the secret access key."
+
+## obj spec.auth.credentials.secretAccessKey.valueFromSecret
+
+"A reference to a Kubernetes Secret object containing the secret access key."
+
+### fn spec.auth.credentials.secretAccessKey.valueFromSecret.withKey
+
+```ts
+withKey(key)
+```
+
+
+
+### fn spec.auth.credentials.secretAccessKey.valueFromSecret.withName
+
+```ts
+withName(name)
+```
+
+
+
+## obj spec.auth.credentials.sessionToken
+
+"The AWS session token for temporary credentials."
+
+### fn spec.auth.credentials.sessionToken.withValue
+
+```ts
+withValue(value)
+```
+
+"Literal value of the session token."
+
+## obj spec.auth.credentials.sessionToken.valueFromSecret
+
+"A reference to a Kubernetes Secret object containing the session token."
+
+### fn spec.auth.credentials.sessionToken.valueFromSecret.withKey
+
+```ts
+withKey(key)
+```
+
+
+
+### fn spec.auth.credentials.sessionToken.valueFromSecret.withName
+
+```ts
+withName(name)
+```
+
+
+
+## obj spec.auth.iam
+
+"The IAM role authentication parameters. For Amazon EKS only."
+
+### fn spec.auth.iam.withRoleArn
+
+```ts
+withRoleArn(roleArn)
+```
+
+"The ARN of an IAM role which can be impersonated to obtain AWS permissions. For\nmore information about IAM roles for service accounts, please refer to the Amazon EKS User Guide\nat https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html\n\nBeware that this IAM role only applies to the receive adapter, for retrieving S3 notifications\nfrom the intermediate Amazon SQS queue. The TriggerMesh controller requires its own set of IAM\npermissions for interacting with the Amazon S3 and (optionally) Amazon SQS management APIs. These\ncan be granted via a separate IAM role, through the 'triggermesh-controller' serviceAccount that\nis located inside the 'triggermesh' namespace."
+
+### fn spec.auth.iam.withServiceAccount
+
+```ts
+withServiceAccount(serviceAccount)
+```
+
+"The name of the service account to be assigned on the receive adapter. Can be created externally and\nshared between multiple components."
+
+## obj spec.destination
+
+"The intermediate destination of notifications originating from the Amazon S3 bucket, before they are retrieved by this event source. If omitted, an Amazon SQS queue is automatically created and associated with the bucket."
+
+## obj spec.destination.sqs
+
+"Properties of an Amazon SQS queue to use as intermediate destination for bucket notifications."
+
+### fn spec.destination.sqs.withQueueARN
+
+```ts
+withQueueARN(queueARN)
+```
+
+"ARN of the Amazon SQS queue that should be receiving bucket notifications. The expected format is documented at https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonsqs.html#amazonsqs-resources-for-iam-policies."
+
+## obj spec.sink
+
+"The destination of events sourced from Amazon S3."
+
+### fn spec.sink.withUri
+
+```ts
+withUri(uri)
+```
+
+"URI to use as the destination of events."
+
+## obj spec.sink.ref
+
+"Reference to an addressable Kubernetes object to be used as the destination of events."
+
+### fn spec.sink.ref.withApiVersion
+
+```ts
+withApiVersion(apiVersion)
+```
+
+
+
+### fn spec.sink.ref.withKind
+
+```ts
+withKind(kind)
+```
+
+
+
+### fn spec.sink.ref.withName
+
+```ts
+withName(name)
+```
+
+
+
+### fn spec.sink.ref.withNamespace
+
+```ts
+withNamespace(namespace)
+```
+
